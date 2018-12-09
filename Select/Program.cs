@@ -2,7 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using Select;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,37 +15,22 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("http://htmlbook.ru/html/select");
+            driver.Navigate().GoToUrl("https://aqa.works/xpath-tests");
 
-            var character = driver.FindElement(By.Name("select2"));
-            var select2 = new SelectByText(character);
-            select2.SelectText();
-            Thread.Sleep(2000);
+            var selectElement = driver.FindElement(By.Id("numbers"));
+            var numbers = new Select(selectElement);
+            numbers.SelectByValue("2");
+            //numbers.SelectByText("Four");
+           //numbers.SelectByIndex(3);
 
-
-            //IWebDriver driver = new ChromeDriver();
-            // driver.Manage().Window.Maximize();
-            //driver.Navigate().GoToUrl("https://www.facebook.com/");
-
-            //var month = driver.FindElement(By.Id("month"));
-            //var month_value = new SelectByValue(month);
-            //month_value.SelectValue();
-
-
-            //var year = driver.FindElement(By.Id("year"));
-            //var year_value = new Element(year);
-            //year_value.SelectByIndex();
-
-
+            Console.ReadKey();
             driver.Quit();
-
-
-
-
         }
-
     }
+
+
+
+
 }
